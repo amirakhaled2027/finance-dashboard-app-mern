@@ -34,3 +34,7 @@ mongoose
         console.log("Connected to MongoDB")
     })
     .catch((error) => console.log(`${error} didn't connect`))
+
+
+// Export the app as a serverless function
+export default app;

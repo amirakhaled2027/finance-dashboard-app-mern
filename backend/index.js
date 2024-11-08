@@ -26,15 +26,17 @@ app.use("/product", productRoutes);
 app.use("/transaction", transactionRoutes)
 
 // MONGOOSE SETUP
-const PORT = process.env.PORT || 5000;
-mongoose 
-    .connect(process.env.MONGO_URL)
-    .then(async () => {
-        app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-        console.log("Connected to MongoDB")
-    })
-    .catch((error) => console.log(`${error} didn't connect`))
+mongoose.connect(process.env.MONGO_URL)
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch(err => {
+  console.error('Error connecting to MongoDB:', err);
+});
 
+app.listen(4000, ()=>{
+    console.log("Backend server is running on port 4000!")
+});
 
 // Export the app as a serverless function
 export default app;
